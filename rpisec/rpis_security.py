@@ -146,11 +146,11 @@ class RpisSecurity(object):
         if not os.geteuid() == 0:
             exit_error('{0} must be run as root'.format(sys.argv[0]))
 
-        if not self._check_monitor_mode():
-            raise Exception('Monitor mode is not enabled for interface {0} or interface does not exist'.format(self.network_interface))
+        # if not self._check_monitor_mode():
+        #     raise Exception('Monitor mode is not enabled for interface {0} or interface does not exist'.format(self.network_interface))
 
-        self._set_interface_mac_addr()
-        self._set_network_address()
+        # self._set_interface_mac_addr()
+        # self._set_network_address()
 
     def _check_monitor_mode(self):
         """
