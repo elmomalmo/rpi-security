@@ -56,16 +56,16 @@ class RpisState(object):
     def check(self):
         if self.current == 'disabled':
             return
-        now = time.time()
-        if now - self.last_packet > (self.rpis.packet_timeout + 20):
-            if self.current != 'armed':
-                logger.debug("No packets detected for {0} seconds, arming".format(self.rpis.packet_timeout + 20))
-            self.update_state('armed')
-        elif now - self.last_packet > self.rpis.packet_timeout:
-            logger.debug("Running arp_ping_macs before arming...")
-            self.rpis.arp_ping_macs()
-        else:
-            self.update_state('disarmed')
+        # now = time.time()
+        # if now - self.last_packet > (self.rpis.packet_timeout + 20):
+        #     if self.current != 'armed':
+        #         logger.debug("No packets detected for {0} seconds, arming".format(self.rpis.packet_timeout + 20))
+        #     self.update_state('armed')
+        # elif now - self.last_packet > self.rpis.packet_timeout:
+        #     logger.debug("Running arp_ping_macs before arming...")
+        #     self.rpis.arp_ping_macs()
+        # else:
+        #     self.update_state('disarmed')
 
     def generate_status_text(self):
         return (
