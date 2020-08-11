@@ -66,9 +66,9 @@ if __name__ == "__main__":
     monitor_alarm_state_thread = Thread(name='monitor_alarm_state', target=rpisec.threads.monitor_alarm_state, args=(rpis, camera))
     monitor_alarm_state_thread.daemon = True
     monitor_alarm_state_thread.start()
-    capture_packets_thread = Thread(name='capture_packets', target=rpisec.threads.capture_packets, args=(rpis,))
-    capture_packets_thread.daemon = True
-    capture_packets_thread.start()
+    # capture_packets_thread = Thread(name='capture_packets', target=rpisec.threads.capture_packets, args=(rpis,))
+    # capture_packets_thread.daemon = True
+    # capture_packets_thread.start()
     process_photos_thread = Thread(name='process_photos', target=rpisec.threads.process_photos, args=(rpis, camera))
     process_photos_thread.daemon = True
     process_photos_thread.start()

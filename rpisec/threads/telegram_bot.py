@@ -38,7 +38,7 @@ def telegram_bot(rpis, camera):
 
     def help(update, context):
         if check_chat_id(update):
-            update.message.reply_text(parse_mode='Markdown', text='/status: Request status\n/disable: Disable alarm\n/enable: Enable alarm\n/photo: Take a photo\n/gif: Take a gif\n/reboot: reboot\n', timeout=10)
+            update.message.reply_text(parse_mode='Markdown', text='/status: Request status\n/disable: Disable alarm\n/enable: Enable alarm\n/disarm: Disarm alarm\n/arm: Arm alarm\n/photo: Take a photo\n/gif: Take a gif\n/reboot: reboot\n', timeout=10)
 
     def status(update, context):
         if check_chat_id(update):
@@ -51,6 +51,14 @@ def telegram_bot(rpis, camera):
     def enable(update, context):
         if check_chat_id(update):
             rpis.state.update_state('disarmed')
+
+    def disarm(update, context):
+        if check_chat_id(update):
+            rpis.state.update_state('disarmed')
+
+    def arm(update, context):
+        if check_chat_id(update):
+            rpis.state.update_state('armed')
 
     def photo(update, context):
         if check_chat_id(update):
@@ -78,6 +86,8 @@ def telegram_bot(rpis, camera):
         dp.add_handler(CommandHandler("status", status), group=3)
         dp.add_handler(CommandHandler("disable", disable), group=3)
         dp.add_handler(CommandHandler("enable", enable), group=3)
+        dp.add_handler(CommandHandler("disarm", disarm), group=3)
+        dp.add_handler(CommandHandler("arm", arm), group=3)
         dp.add_handler(CommandHandler("photo", photo), group=3)
         dp.add_handler(CommandHandler("gif", gif), group=3)
         dp.add_handler(CommandHandler("reboot", reboot), group=3)
